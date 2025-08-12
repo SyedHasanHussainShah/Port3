@@ -14,7 +14,6 @@
     "@tailwindcss/vite": "^4.1.11",
     "bootstrap": "^5.3.7",
     "class-variance-authority": "^0.7.1",
-    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
     "react": "^19.1.1",
