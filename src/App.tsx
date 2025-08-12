@@ -242,7 +242,6 @@ export default function App() {
 
   const {
     ref: heroRef,
-    variants: heroVariants,
     inView: heroInView,
   } = useReveal();
 
