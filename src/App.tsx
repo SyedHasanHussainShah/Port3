@@ -1140,7 +1140,7 @@ export default function App() {
             </div>
 
             {/* Buttons Container */}
-            <div className="flex flex-col md:flex-row gap-4 items-center z-10">
+            <div className="flex flex-row flex-wrap gap-4 items-center z-10">
               {/* Eye Button (Preview Resume) */}
               <button
                 onClick={() =>
