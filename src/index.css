@@ -1,6 +1,70 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%); /* Half, because we duplicate text */
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite; /* much slower & smoother */
+  gap: 0.25rem; /* just a milli gap */
+}
+
+.glitch-text {
+  position: relative;
+  color: #fff;
+  text-shadow: 0 0 2px #fff, 0 0 5px #141212, 0 0 10px #010000;
+  animation: glitch 1.5s infinite;
+}
+
+.group\/eye:hover .eye-pupil {
+  animation: pupil-look 0.8s ease-in-out forwards;
+}
+
+@keyframes pupil-look {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-5px); }  /* move left */
+  60% { transform: translateX(5px); }   /* move right */
+  100% { transform: translateX(0); }    /* back to center */
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+@keyframes arrowDrop {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(4px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes cloudBounce {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+
+@font-face {
+  font-family: "__silka_258137";
+  src: url("/fonts/silka.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "__silka_Fallback_258137";
+  src: url("/fonts/silka-fallback.woff2") format("woff2");
+}
+
 /* CSS variables for smooth theme transitions */
 :root {
   --bg: 255 255 255;
