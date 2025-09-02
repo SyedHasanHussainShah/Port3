@@ -477,6 +477,13 @@ export default function App() {
               <Target size={16} /> Goals
             </a>
             <a
+              href="#resume"
+              className="flex items-center gap-2 hover:text-sky-500 transition-colors"
+            >
+              <Download size={16} /> Resume
+            </a>
+
+            <a
               href="#contact"
               className="flex items-center gap-2 hover:text-sky-500 transition-colors"
             >
