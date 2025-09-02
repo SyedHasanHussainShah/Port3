@@ -924,63 +924,75 @@ export default function App() {
   </section>
 
         {/* Expanded Project View */}
-        {expandedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
-            onClick={() => setExpandedProject(null)}
+       {expandedProject && (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 bg-transparent backdrop-blur-lg z-50 flex items-center justify-center p-4"
+    onClick={() => setExpandedProject(null)}
+  >
+    <motion.div
+      initial={{ scale: 0.9, opacity: 0, y: 0 }}
+      animate={{ scale: 1, opacity: 1, y: 0 }}
+      transition={{ type: "spring", damping: 25, stiffness: 300 }}
+      className="bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Header with close button */}
+      <div className="relative">
+        <button
+          className="absolute top-5 right-5 z-10 bg-white/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 rounded-full p-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110"
+          onClick={() => setExpandedProject(null)}
+          aria-label="Close modal"
+        >
+          <X size={22} className="text-slate-700 dark:text-slate-300" />
+        </button>
+        <img
+          src={expandedProject.image}
+          alt={expandedProject.title}
+          className="w-full h-60 object-cover"
+        />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
+      </div>
+      
+      {/* Content */}
+      <div className="p-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {expandedProject.title}
+          </h2>
+          <a
+            href={expandedProject.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="bg-white dark:bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="relative">
-                <button
-                  className="absolute top-4 right-4 z-10 bg-white dark:bg-slate-800 rounded-full p-2 shadow-md"
-                  onClick={() => setExpandedProject(null)}
-                >
-                  <X size={20} />
-                </button>
-                <img
-                  src={expandedProject.image}
-                  alt={expandedProject.title}
-                  className="w-full h-64 object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h2 className="text-2xl font-bold mb-4">
-                  {expandedProject.title}
-                </h2>
-                <p className="text-slate-600 dark:text-slate-300 mb-4">
-                  {expandedProject.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {expandedProject.stack.map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 text-sm rounded-full bg-gradient-to-r from-blue-100 via-slate-100 to-purple-100 dark:from-blue-900 dark:via-slate-800 dark:to-purple-900 text-slate-700 dark:text-slate-300 shadow-sm"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={expandedProject.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary"
-                >
-                  View Live Project
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-
+            View Live Project
+          </a>
+        </div>
+        
+        <p className="text-slate-600 dark:text-slate-300 mb-8 text-lg leading-relaxed">
+          {expandedProject.description}
+        </p>
+        
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4 text-slate-800 dark:text-slate-200">Tech Stack</h3>
+          <div className="flex flex-wrap gap-3">
+            {expandedProject.stack.map((t) => (
+              <span
+                key={t}
+                className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 text-slate-700 dark:text-slate-300 shadow-sm border border-slate-200 dark:border-slate-700 font-medium"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  </motion.div>
+)}
         {/* Skills */}
         <section id="skills" className="container-responsive">
           <SectionHeader
