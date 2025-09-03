@@ -177,46 +177,25 @@ const EDUCATION = [
     period: "12/2023",
   },
 ];
-
 const SKILLS = [
   { name: "HTML5", icon: <FaHtml5 className="text-orange-500" />, level: 95 },
   { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" />, level: 90 },
-  {
-    name: "JavaScript",
-    icon: <SiTypescript className="text-sky-500" />,
-    level: 75,
-  },
-  {
-    name: "Bootstrap",
-    icon: <FaBootstrap className="text-purple-600" />,
-    level: 85,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-sky-400" />,
-    level: 90,
-  },
+  { name: "JavaScript", icon: <SiTypescript className="text-sky-500" />, level: 75 },
+  { name: "Bootstrap", icon: <FaBootstrap className="text-purple-600" />, level: 85 },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-sky-400" />, level: 90 },
   { name: "Node.js", icon: <FaNodeJs className="text-green-600" />, level: 80 },
   { name: "React", icon: <FaReact className="text-sky-400" />, level: 65 },
   { name: "Vite", icon: <SiVite className="text-purple-500" />, level: 80 },
   { name: "Next.js", icon: <SiNextdotjs />, level: 50 },
   { name: "Express.js", icon: <SiExpress />, level: 48 },
-  {
-    name: "MongoDB",
-    icon: <SiMongodb className="text-green-700" />,
-    level: 70,
-  },
+  { name: "MongoDB", icon: <SiMongodb className="text-green-700" />, level: 70 },
   { name: "Python", icon: <FaPython className="text-yellow-500" />, level: 75 },
   { name: "C++", icon: <SiCplusplus className="text-sky-500" />, level: 80 },
   { name: "C#", icon: <SiSharp className="text-purple-500" />, level: 78 },
   { name: "Oracle", icon: <SiOracle className="text-red-500" />, level: 70 },
-  { name: "Flask", icon: <SiFlask className="text-green-500" />, level: 75 },
-  {
-    name: "Three.js",
-    icon: <SiThreedotjs className="text-yellow-500" />,
-    level: 65,
-  },
-  { name: "Linux", icon: <SiLinux className="text-orange-500" />, level: 80 },
+  { name: "Flask", icon: <SiFlask className="text-green-500" />, level: 60 },
+  { name: "Three.js", icon: <div className="text-blue-400 text-2xl">3D</div>, level: 40 },
+  { name: "Linux", icon: <div className="text-yellow-500 text-2xl">🐧</div>, level: 70 },
 ];
 
 function useTheme(): [string, () => void] {
@@ -273,28 +252,88 @@ function useReveal() {
 // Tech Galaxy Component
 const TechGalaxy = () => {
   return (
-    <div className="w-full relative mb-8 rounded-xl overflow-hidden">
-      <div className="flex items-center justify-center">
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 p-4">
-          {SKILLS.map((skill) => (
+    <div className="w-full relative mb-8 overflow-hidden">
+      <div className="relative h-80 rounded-[2rem] bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700 overflow-hidden flex items-center justify-center">
+        
+        {/* Center element */}
+        <div className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg z-10 shadow-lg">
+          Tech
+        </div>
+        
+        {/* Orbiting skills - FASTER animation */}
+        {SKILLS.map((skill, index) => {
+          const angle = (index / SKILLS.length) * Math.PI * 2;
+          const radius = 140;
+          
+          return (
             <motion.div
               key={skill.name}
-              className="p-3 rounded-lg bg-white dark:bg-slate-800 shadow-md flex flex-col items-center justify-center cursor-pointer"
-              whileHover={{
-                scale: 1.2,
-                rotate: 5,
-                boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+              className="absolute p-3 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-lg flex flex-col items-center justify-center cursor-pointer border border-slate-200 dark:border-slate-700 z-20"
+              animate={{
+                x: Math.cos(angle) * radius,
+                y: Math.sin(angle) * radius,
+                rotate: 360,
               }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{
+                x: {
+                  duration: 8, // Faster: reduced from 20 to 8 seconds
+                  repeat: Infinity,
+                  repeatDelay: 20,
+                  ease: "linear",
+                },
+                y: {
+                  duration: 8, // Faster: reduced from 20 to 8 seconds
+                  repeat: Infinity,
+                  repeatDelay: 20,
+                  ease: "linear",
+                },
+                rotate: {
+                  duration: 8, // Faster: reduced from 20 to 8 seconds
+                  repeat: Infinity,
+                  repeatDelay: 20,
+                  ease: "linear",
+                },
+              }}
+              whileHover={{
+                scale: 1.4,
+                z: 30,
+                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)",
+                transition: { duration: 0.2 } // Faster hover transition
+              }}
             >
               <div className="text-2xl mb-1">{skill.icon}</div>
               <span className="text-xs font-medium text-center">
                 {skill.name}
               </span>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
+        
+        {/* Decorative orbital rings - FASTER */}
+        <div className="absolute w-64 h-64 rounded-full border border-slate-300 dark:border-slate-600 opacity-30 orbit-animation-fast"></div>
+        <div className="absolute w-80 h-80 rounded-full border border-slate-300 dark:border-slate-600 opacity-20 orbit-reverse-fast"></div>
+        <div className="absolute w-96 h-96 rounded-full border border-slate-300 dark:border-slate-600 opacity-10 orbit-fast"></div>
       </div>
+
+      {/* Faster animation styles */}
+      <style>{`
+        @keyframes orbit {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        
+        .orbit-animation-fast {
+          animation: orbit 30s linear infinite;
+        }
+        
+        .orbit-reverse-fast {
+          animation: orbit 30s linear infinite reverse;
+        }
+        
+        .orbit-slow-fast {
+          animation: orbit 35s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };
@@ -660,6 +699,12 @@ export default function App() {
               >
                 <Target size={16} /> Goals
               </a>
+              <a
+              href="#resume"
+              className="flex items-center gap-2 hover:text-sky-500 transition-colors"
+            >
+              <Download size={16} /> Resume
+            </a>
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
