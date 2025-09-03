@@ -160,7 +160,7 @@ const PROJECTS: Project[] = [
     description:
       "Spotify clone with dynamic playlists, real-time music streaming, and sleek UI powered by the Spotify API for authentic functionality.",
     image: "/Spotify.png",
-    link: "https://github.com/SyedHasanHussainShah/Spotify-clone-using-html-css-and-javascript",
+    link: "https://my-spotify-clone.surge.sh/",
   },
 ];
 
