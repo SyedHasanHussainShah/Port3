@@ -194,8 +194,8 @@ const SKILLS = [
   { name: "C#", icon: <SiSharp className="text-purple-500" />, level: 78 },
   { name: "Oracle", icon: <SiOracle className="text-red-500" />, level: 70 },
   { name: "Flask", icon: <SiFlask className="text-green-500" />, level: 60 },
-  { name: "Three.js", icon: <div className="text-blue-400 text-2xl">3D</div>, level: 40 },
-  { name: "Linux", icon: <div className="text-yellow-500 text-2xl">🐧</div>, level: 70 },
+  { name: "Three.js", icon: <SiThreedotjs className="text-blue-400 text-2xl"/>, level: 40 },
+  { name: "Linux", icon: <SiLinux className="text-yellow-500 text-2xl"/>, level: 70 },
 ];
 
 function useTheme(): [string, () => void] {
