@@ -100,6 +100,14 @@ const PROJECTS: Project[] = [
     link: "https://islam-1xr3.vercel.app/",
   },
   {
+    title: "Spotify",
+    stack: ["React.js", "Vite", "Tailwind CSS", "Bootstrap", "JavaScript", "Spotify API"],
+    description:
+      "Spotify clone with dynamic playlists, real-time music streaming, and sleek UI powered by the Spotify API for authentic functionality.",
+    image: "/Spotify.png",
+    link: "https://my-spotify-clone.surge.sh/",
+  },
+  {
     title: "Train Reservation System",
     stack: [
       "HTML",
@@ -154,14 +162,7 @@ const PROJECTS: Project[] = [
     image: "/Transpomate.png",
     link: "https://github.com/SyedHasanHussainShah/Transpomate-App-Admin-View-",
   },
-  {
-    title: "Spotify",
-    stack: ["HTML", "Tailwind CSS", "Bootstrap", "JavaScript", "Spotify API"],
-    description:
-      "Spotify clone with dynamic playlists, real-time music streaming, and sleek UI powered by the Spotify API for authentic functionality.",
-    image: "/Spotify.png",
-    link: "https://my-spotify-clone.surge.sh/",
-  },
+  
 ];
 
 const EDUCATION = [
